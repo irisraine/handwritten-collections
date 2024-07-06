@@ -72,6 +72,9 @@ public class MyArrayList<E extends Comparable<E>> implements MyList<E> {
     }
 
     public static <E extends Comparable<E>> void sort(MyArrayList<E> myArrayList) {
+        if (myArrayList.size() < 2)
+            return;
+
         boolean isSwapped;
         for (int i = 0; i < myArrayList.size() - 1; i++) {
             isSwapped = false;
