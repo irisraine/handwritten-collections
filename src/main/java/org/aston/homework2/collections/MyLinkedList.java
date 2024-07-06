@@ -1,6 +1,5 @@
 package org.aston.homework2.collections;
 
-import java.util.Arrays;
 import java.util.Collection;
 
 public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
@@ -25,15 +24,15 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
     }
 
     public MyLinkedList(Collection<? extends E> otherList) {
-        for (E otherListElem : otherList) {
-            add(otherListElem);
+        for (E element : otherList) {
+            add(element);
         }
         this.size = otherList.size();
     }
 
     @Override
-    public void add(E elem) {
-        Node<E> currentNode = new Node<>(elem);
+    public void add(E element) {
+        Node<E> currentNode = new Node<>(element);
         if (tail == null) {
             head = currentNode;
             tail = currentNode;
@@ -66,11 +65,11 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
     }
 
     @Override
-    public void remove(E elem) {
+    public void remove(E element) {
         Node<E> currentNode;
         for (int i = 0; i < size; i++) {
             currentNode = getNode(i);
-            if (elem.equals(currentNode.data)) {
+            if (element.equals(currentNode.data)) {
                 detachNode(currentNode);
                 return;
             }

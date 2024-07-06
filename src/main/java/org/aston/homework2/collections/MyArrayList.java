@@ -19,10 +19,10 @@ public class MyArrayList<E extends Comparable<E>> implements MyList<E> {
     }
 
     @Override
-    public void add(E elem) {
+    public void add(E element) {
         if (size == elements.length)
             enlargeCapacity();
-        elements[size++] = elem;
+        elements[size++] = element;
     }
 
     @Override
@@ -49,9 +49,9 @@ public class MyArrayList<E extends Comparable<E>> implements MyList<E> {
     }
 
     @Override
-    public void remove(E elem) {
+    public void remove(E element) {
         for (int i = 0; i < size; i++) {
-            if (elements[i].equals(elem))
+            if (elements[i].equals(element))
                 remove(i);
         }
     }
@@ -77,9 +77,9 @@ public class MyArrayList<E extends Comparable<E>> implements MyList<E> {
             isSwapped = false;
             for (int j = 0; j < myArrayList.size() - 1 - i; j++) {
                 if (myArrayList.get(j).compareTo(myArrayList.get(j + 1)) > 0) {
-                    E currentElem = myArrayList.get(j);
+                    E currentElement = myArrayList.get(j);
                     myArrayList.elements[j] = myArrayList.get(j + 1);
-                    myArrayList.elements[j + 1] = currentElem;
+                    myArrayList.elements[j + 1] = currentElement;
                     isSwapped = true;
                 }
             }
