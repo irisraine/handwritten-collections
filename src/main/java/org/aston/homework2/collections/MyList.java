@@ -1,11 +1,12 @@
 package org.aston.homework2.collections;
 
+import java.util.Collection;
+
 public interface MyList<E extends Comparable<E>> {
     void add(E elem);
-    void addAll(MyList<E> otherList);
-    void size();
+    void addAll(Collection<E> otherList);
     E get(int index);
-    E get(E elem);
-    E remove(int index);
-    E remove(E elem);
+    void remove(int index);
+    void remove(E elem);
+    int size();
 }
