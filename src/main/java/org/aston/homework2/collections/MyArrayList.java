@@ -89,4 +89,13 @@ public class MyArrayList<E extends Comparable<E>> implements MyList<E> {
             if (!isSwapped) break;
         }
     }
+
+    @Override
+    public String toString() {
+        StringBuilder listToString = new StringBuilder();
+        for (int i = 0; i < size; i++) {
+            listToString.append(get(i)).append(" ");
+        }
+        return listToString.toString();
+    }
 }
