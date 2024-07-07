@@ -49,7 +49,7 @@ public class UsageExample {
                 new LinkedList<>(Arrays.asList("Already", "Filled"))
         );
         System.out.print("[MyLinkedList instance with contents from standard MyLinkedList] : ");
-        System.out.println(myArrayListFromAnotherCollection);
+        System.out.println(myLinkedListFromAnotherCollection);
         System.out.println("[Creating new empty MyLinkedList instance]");
         MyLinkedList<String> myLinkedList = new MyLinkedList<>();
         myLinkedList.add("First");
