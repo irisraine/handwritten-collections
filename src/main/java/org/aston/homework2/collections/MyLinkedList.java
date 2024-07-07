@@ -58,6 +58,13 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
     }
 
     @Override
+    public void set(int index, E element) {
+        checkIndex(index);
+        Node<E> currentNode = getNode(index);
+        currentNode.data = element;
+    }
+
+    @Override
     public void remove(int index) {
         checkIndex(index);
         Node<E> currentNode = getNode(index);

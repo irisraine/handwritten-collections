@@ -40,6 +40,12 @@ public class MyArrayList<E extends Comparable<E>> implements MyList<E> {
     }
 
     @Override
+    public void set(int index, E element) {
+        checkIndex(index);
+        elements[index] = element;
+    }
+
+    @Override
     public void remove(int index) {
         checkIndex(index);
         for (int i = index; i < size - 1; i++) {
