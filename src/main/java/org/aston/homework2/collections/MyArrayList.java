@@ -77,25 +77,6 @@ public class MyArrayList<E extends Comparable<E>> implements MyList<E> {
             throw new IndexOutOfBoundsException();
     }
 
-    public static <E extends Comparable<E>> void sort(MyArrayList<E> myArrayList) {
-        if (myArrayList.size() < 2)
-            return;
-
-        boolean isSwapped;
-        for (int i = 0; i < myArrayList.size() - 1; i++) {
-            isSwapped = false;
-            for (int j = 0; j < myArrayList.size() - 1 - i; j++) {
-                if (myArrayList.get(j).compareTo(myArrayList.get(j + 1)) > 0) {
-                    E currentElement = myArrayList.get(j);
-                    myArrayList.elements[j] = myArrayList.get(j + 1);
-                    myArrayList.elements[j + 1] = currentElement;
-                    isSwapped = true;
-                }
-            }
-            if (!isSwapped) break;
-        }
-    }
-
     @Override
     public String toString() {
         StringBuilder listToString = new StringBuilder();

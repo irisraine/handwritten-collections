@@ -129,29 +129,6 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
         size--;
     }
 
-    public static <E extends Comparable<E>> void sort(MyLinkedList<E> myLinkedList) {
-        if (myLinkedList.size() < 2)
-            return;
-
-        Node<E> firstNode, secondNode;
-        E temporaryData;
-        boolean isSwapped;
-        for (int i = 0; i < myLinkedList.size() - 1; i++) {
-            isSwapped = false;
-            for (int j = 0; j < myLinkedList.size() - 1 - i; j++) {
-                firstNode = myLinkedList.getNode(j);
-                secondNode = myLinkedList.getNode(j + 1);
-                if (firstNode.data.compareTo(secondNode.data) > 0) {
-                    temporaryData = firstNode.data;
-                    firstNode.data = secondNode.data;
-                    secondNode.data = temporaryData;
-                    isSwapped = true;
-                }
-            }
-            if (!isSwapped) break;
-        }
-    }
-
     @Override
     public String toString() {
         StringBuilder listToString = new StringBuilder();
