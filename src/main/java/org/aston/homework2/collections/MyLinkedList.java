@@ -33,15 +33,15 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
     @Override
     public void add(E element) {
         Node<E> currentNode = new Node<>(element);
-        if (tail == null) {
-            head = currentNode;
-            tail = currentNode;
+        if (this.head == null) {
+            this.head = currentNode;
+            this.tail = currentNode;
         } else {
-            tail.next = currentNode;
+            this.tail.next = currentNode;
             currentNode.prev = tail;
-            tail = currentNode;
+            this.tail = currentNode;
         }
-        size++;
+        this.size++;
     }
 
     @Override
@@ -74,7 +74,7 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
     @Override
     public void remove(E element) {
         Node<E> currentNode;
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < this.size; i++) {
             currentNode = getNode(i);
             if (element.equals(currentNode.data)) {
                 detachNode(currentNode);
@@ -85,23 +85,23 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
 
     @Override
     public int size() {
-        return size;
+        return this.size;
     }
 
     private void checkIndex(int index) {
-        if (index < 0 || index >= size)
+        if (index < 0 || index >= this.size)
             throw new IndexOutOfBoundsException();
     }
 
     private Node<E> getNode(int index) {
         Node<E> currentNode;
-        if (index < size / 2) {
-            currentNode = head;
+        if (index < this.size / 2) {
+            currentNode = this.head;
             for (int i = 0; i < index; i++)
                 currentNode = currentNode.next;
         } else {
-            currentNode = tail;
-            for (int i = size - 1; i > index; i--) {
+            currentNode = this.tail;
+            for (int i = this.size - 1; i > index; i--) {
                 currentNode = currentNode.prev;
             }
         }
@@ -126,13 +126,13 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
             node.next = null;
         }
         node.data = null;
-        size--;
+        this.size--;
     }
 
     @Override
     public String toString() {
         StringBuilder listToString = new StringBuilder();
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < this.size; i++) {
             listToString.append(get(i)).append(" ");
         }
         return listToString.toString();

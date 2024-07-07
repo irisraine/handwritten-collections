@@ -10,7 +10,7 @@ public class MyArrayList<E extends Comparable<E>> implements MyList<E> {
 
     public MyArrayList() {
         this.elements = new Object[DEFAULT_CAPACITY];
-        size = 0;
+        this.size = 0;
     }
 
     public MyArrayList(Collection<? extends E> otherList) {
@@ -20,9 +20,9 @@ public class MyArrayList<E extends Comparable<E>> implements MyList<E> {
 
     @Override
     public void add(E element) {
-        if (size == elements.length)
+        if (this.size == this.elements.length)
             enlargeCapacity();
-        elements[size++] = element;
+        this.elements[this.size++] = element;
     }
 
     @Override
@@ -36,51 +36,51 @@ public class MyArrayList<E extends Comparable<E>> implements MyList<E> {
     @Override
     public E get(int index) {
         checkIndex(index);
-        return (E) elements[index];
+        return (E) this.elements[index];
     }
 
     @Override
     public void set(int index, E element) {
         checkIndex(index);
-        elements[index] = element;
+        this.elements[index] = element;
     }
 
     @Override
     public void remove(int index) {
         checkIndex(index);
-        for (int i = index; i < size - 1; i++) {
-            elements[i] = elements[i + 1];
+        for (int i = index; i < this.size - 1; i++) {
+            this.elements[i] = this.elements[i + 1];
         }
-        elements[--size] = null;
+        this.elements[--this.size] = null;
     }
 
     @Override
     public void remove(E element) {
-        for (int i = 0; i < size; i++) {
-            if (elements[i].equals(element))
+        for (int i = 0; i < this.size; i++) {
+            if (this.elements[i].equals(element))
                 remove(i);
         }
     }
 
     @Override
     public int size() {
-        return size;
+        return this.size;
     }
 
     private void enlargeCapacity() {
-        int newSize = elements.length * 2;
-        elements = Arrays.copyOf(elements, newSize);
+        int newSize = this.elements.length * 2;
+        this.elements = Arrays.copyOf(this.elements, newSize);
     }
 
     private void checkIndex(int index) {
-        if (index < 0 || index >= size)
+        if (index < 0 || index >= this.size)
             throw new IndexOutOfBoundsException();
     }
 
     @Override
     public String toString() {
         StringBuilder listToString = new StringBuilder();
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < this.size; i++) {
             listToString.append(get(i)).append(" ");
         }
         return listToString.toString();
