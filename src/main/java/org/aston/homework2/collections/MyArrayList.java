@@ -26,6 +26,18 @@ public class MyArrayList<E extends Comparable<E>> implements MyList<E> {
     }
 
     @Override
+    public void add(int index, E element) {
+        checkIndex(index);
+        if (this.size == this.elements.length)
+            enlargeCapacity();
+        for (int i = this.size; i > index; i--) {
+            this.elements[i] = this.elements[i - 1];
+        }
+        this.elements[index] = element;
+        this.size++;
+    }
+
+    @Override
     public void addAll(Collection<E> otherList) {
         for (E element : otherList) {
             add(element);
@@ -57,8 +69,10 @@ public class MyArrayList<E extends Comparable<E>> implements MyList<E> {
     @Override
     public void remove(E element) {
         for (int i = 0; i < this.size; i++) {
-            if (this.elements[i].equals(element))
+            if (this.elements[i].equals(element)) {
                 remove(i);
+                return;
+            }
         }
     }
 

@@ -32,16 +32,43 @@ public class MyLinkedList<E extends Comparable<E>> implements MyList<E> {
 
     @Override
     public void add(E element) {
-        Node<E> currentNode = new Node<>(element);
+        Node<E> newNode = new Node<>(element);
         if (this.head == null) {
-            this.head = currentNode;
-            this.tail = currentNode;
+            this.head = newNode;
+            this.tail = newNode;
         } else {
-            this.tail.next = currentNode;
-            currentNode.prev = tail;
-            this.tail = currentNode;
+            this.tail.next = newNode;
+            newNode.prev = tail;
+            this.tail = newNode;
         }
         this.size++;
+    }
+
+    @Override
+    public void add(int index, E element) {
+        checkIndex(index);
+        Node<E> newNode = new Node<>(element);
+        if (index == 0) {
+            if (head == null) {
+                add(element);
+            } else {
+                newNode.next = this.head;
+                this.head.prev = newNode;
+                this.head = newNode;
+            }
+        } else if (index == this.size) {
+            add(element);
+        } else {
+            Node<E> currentNode = this.head;
+            for (int i = 0; i < index; i++) {
+                currentNode = currentNode.next;
+            }
+            newNode.next = currentNode;
+            newNode.prev = currentNode.prev;
+            currentNode.prev.next = newNode;
+            currentNode.prev = newNode;
+        }
+        size++;
     }
 
     @Override

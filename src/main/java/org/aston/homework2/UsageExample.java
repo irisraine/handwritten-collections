@@ -16,6 +16,8 @@ public class UsageExample {
         myArrayList.add("First");
         myArrayList.add("Second");
         myArrayList.add("Third");
+        myArrayList.add("Third");
+        myArrayList.add("Third");
         myArrayList.add("Fourth");
         myArrayList.add("Fifth");
         myArrayList.add("Sixth");
@@ -25,6 +27,10 @@ public class UsageExample {
         System.out.println("[Add multiple elements from other collection]");
         myArrayList.addAll(new ArrayList<>(Arrays.asList("Tenth", "Eleventh")));
         System.out.print("[MyArrayList contents after add another collection] : ");
+        System.out.println(myArrayList);
+        System.out.println("[Add element on the specific position by index]");
+        myArrayList.add(1,"Another_First");
+        System.out.print("[MyArrayList contents after add another element on the specific index] : ");
         System.out.println(myArrayList);
         System.out.print("[Get element by index] : ");
         System.out.println(myArrayList.get(2));
@@ -48,12 +54,14 @@ public class UsageExample {
         MyLinkedList<String> myLinkedListFromAnotherCollection = new MyLinkedList<>(
                 new LinkedList<>(Arrays.asList("Already", "Filled"))
         );
-        System.out.print("[MyLinkedList instance with contents from standard MyLinkedList] : ");
+        System.out.print("[MyLinkedList instance with contents from standard LinkedList] : ");
         System.out.println(myLinkedListFromAnotherCollection);
         System.out.println("[Creating new empty MyLinkedList instance]");
         MyLinkedList<String> myLinkedList = new MyLinkedList<>();
         myLinkedList.add("First");
         myLinkedList.add("Second");
+        myLinkedList.add("Third");
+        myLinkedList.add("Third");
         myLinkedList.add("Third");
         myLinkedList.add("Fourth");
         myLinkedList.add("Fifth");
@@ -64,6 +72,10 @@ public class UsageExample {
         System.out.println("[Add multiple elements from other collection]");
         myLinkedList.addAll(new LinkedList<>(Arrays.asList("Tenth", "Eleventh")));
         System.out.print("[MyLinkedList contents after add another collection] : ");
+        System.out.println(myLinkedList);
+        System.out.println("[Add element on the specific position by index]");
+        myLinkedList.add(1,"Another_First");
+        System.out.print("[MyLinkedList contents after add another element on the specific index] : ");
         System.out.println(myLinkedList);
         System.out.print("[Get element by index] : ");
         System.out.println(myLinkedList.get(2));
