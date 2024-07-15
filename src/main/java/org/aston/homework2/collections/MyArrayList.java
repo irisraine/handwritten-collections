@@ -21,7 +21,7 @@ public class MyArrayList<E extends Comparable<E>> implements MyList<E> {
     @Override
     public void add(E element) {
         if (this.size == this.elements.length)
-            enlargeCapacity();
+            enlargeCapacity(1);
         this.elements[this.size++] = element;
     }
 
@@ -29,7 +29,7 @@ public class MyArrayList<E extends Comparable<E>> implements MyList<E> {
     public void add(int index, E element) {
         checkIndex(index);
         if (this.size == this.elements.length)
-            enlargeCapacity();
+            enlargeCapacity(1);
         for (int i = this.size; i > index; i--) {
             this.elements[i] = this.elements[i - 1];
         }
@@ -39,8 +39,9 @@ public class MyArrayList<E extends Comparable<E>> implements MyList<E> {
 
     @Override
     public void addAll(Collection<E> otherList) {
+        enlargeCapacity(otherList.size());
         for (E element : otherList) {
-            add(element);
+            this.elements[this.size++] = element;
         }
     }
 
@@ -64,6 +65,8 @@ public class MyArrayList<E extends Comparable<E>> implements MyList<E> {
             this.elements[i] = this.elements[i + 1];
         }
         this.elements[--this.size] = null;
+        if (this.elements.length > DEFAULT_CAPACITY && this.size < this.elements.length / 2)
+            optimizeCapacity();
     }
 
     @Override
@@ -71,9 +74,11 @@ public class MyArrayList<E extends Comparable<E>> implements MyList<E> {
         for (int i = 0; i < this.size; i++) {
             if (this.elements[i].equals(element)) {
                 remove(i);
-                return;
+                break;
             }
         }
+        if (this.elements.length > DEFAULT_CAPACITY && this.size < this.elements.length / 2)
+            optimizeCapacity();
     }
 
     @Override
@@ -81,8 +86,13 @@ public class MyArrayList<E extends Comparable<E>> implements MyList<E> {
         return this.size;
     }
 
-    private void enlargeCapacity() {
-        int newSize = this.elements.length * 2;
+    private void enlargeCapacity(int additionalCapacity) {
+        int newSize = Math.max(this.elements.length * 2, this.elements.length + additionalCapacity);
+        this.elements = Arrays.copyOf(this.elements, newSize);
+    }
+
+    private void optimizeCapacity() {
+        int newSize = Math.max(this.elements.length / 2, DEFAULT_CAPACITY);
         this.elements = Arrays.copyOf(this.elements, newSize);
     }
 
