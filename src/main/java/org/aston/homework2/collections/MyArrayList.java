@@ -87,7 +87,7 @@ public class MyArrayList<E extends Comparable<E>> implements MyList<E> {
     }
 
     private void enlargeCapacity(int additionalCapacity) {
-        int newSize = Math.max(this.elements.length * 2, this.elements.length + additionalCapacity);
+        int newSize = Math.max(this.elements.length + DEFAULT_CAPACITY, this.elements.length + additionalCapacity);
         this.elements = Arrays.copyOf(this.elements, newSize);
     }
 
